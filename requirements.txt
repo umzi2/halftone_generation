@@ -1,2 +1,2 @@
-pepeline==0.2.11
+pepeline==0.3.0
 numpy~=1.26.4

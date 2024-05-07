@@ -1,7 +1,6 @@
 import os
 
-import numpy as np
-from pepeline import read, save
+from pepeline import read, save, cvt_color, CvtType
 
 from src.add_halftone import rgb_halftone, cmyk_halftone, gray_halftone
 
@@ -22,7 +21,7 @@ for img_name in img_list:
     out_cmyk_folder = os.path.join("./test/OUTPUT/cmyk", img_name)
     save(cmyk_halftone_img, out_cmyk_folder)
 
-    img_gray = np.dot(img[..., :3], [0.114, 0.587, 0.299]).astype(np.float32)
+    img_gray = cvt_color(img, CvtType.RGB2GrayBt709)
     gray_halftone_img = gray_halftone(img_gray, 7)
     out_gray_folder = os.path.join("./test/OUTPUT/gray", img_name)
     save(gray_halftone_img, out_gray_folder)
